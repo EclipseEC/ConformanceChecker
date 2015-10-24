@@ -1,38 +1,49 @@
 package conformance;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+/**
+ * @(#) ConformanceChecker.java
+ */
 
-import org.processmining.models.connections.GraphLayoutConnection;
-import org.processmining.models.graphbased.directed.petrinet.PetrinetGraph;
-import org.processmining.models.graphbased.directed.petrinet.impl.PetrinetFactory;
-import org.processmining.models.semantics.petrinet.Marking;
-import org.processmining.plugins.pnml.Pnml;
+public class ConformanceChecker
+{
+    private int missingTokens = 0;
 
-import parser.PnmlImportUtils;
+    private int remainingTokens = 0;
 
-public class ConformanceChecker {
-    private static final String PNML = "src/main/resources/test.pnml";
-    private static final String XES = "src/main/resources/test.xes";
+    private int consumedTokens = 0;
 
-    public static void main(String[] args) {
-        try {
-            PetrinetGraph petriNet = getPetriNet();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private int producedTokens = 0;
+
+    public void addMissingToken( int num ){
+        missingTokens += num;
     }
 
-    private static PetrinetGraph getPetriNet() throws Exception {
-        PnmlImportUtils ut = new PnmlImportUtils();
-        File f = new File(PNML);
-        InputStream input = new FileInputStream(f);
-        Pnml pnml = ut.importPnmlFromStream(input, f.getName(), f.length());
-        PetrinetGraph net = PetrinetFactory
-                .newInhibitorNet(pnml.getLabel() + " (imported from " + f.getName() + ")");
-        Marking marking = new Marking();
-        pnml.convertToNet(net, marking, new GraphLayoutConnection(net));
-        return net;
+    public void addRemainingToken( int num ){
+        remainingTokens += num;
     }
+
+    public void addConsumedToken( int num ){
+        consumedTokens += num;
+    }
+
+    public void addProducedToken( int num ){
+        producedTokens += num;
+    }
+
+    public int getMissingTokens( ){
+        return missingTokens;
+    }
+
+    public int getRemainingTokens( ){
+        return remainingTokens;
+    }
+
+    public int getConsumedTokens( ){
+        return consumedTokens;
+    }
+
+    public int getProducedTokens( ){
+        return producedTokens;
+    }
+
 }
