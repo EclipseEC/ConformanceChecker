@@ -1,7 +1,8 @@
 package conformance;
 
 import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @(#) Event.java
@@ -10,29 +11,38 @@ import java.util.List;
 public class Event
 {
     private String name;
-
     private Date timestamp;
+    private String type;
+    private Map<String, String> attributes = new HashMap<String, String>();
 
-    private List<String> attributes;
+    public Event() {}
 
-    public Event(String name, Date timestamp, List<String> attributes,
-            Transition transition) {
-        this.name = name;
-        this.timestamp = timestamp;
-        this.attributes = attributes;
-    }
-
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public Date getTimestamp(){
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public List<String> getAttributes(){
-        return attributes;
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
+    public Map<String, String> getAttributes() {
+        return attributes;
+    }
 
 }

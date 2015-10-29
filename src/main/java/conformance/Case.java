@@ -1,30 +1,35 @@
 package conformance;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @(#) Case.java
  */
 
 public class Case {
-    @SuppressWarnings("unused")
-    private long id;
 
-    private List<String> attributes;
+    private String name;
+    private Map<String, String> attributes = new HashMap<String, String>();
+    private List<Event> events = new ArrayList<Event>();
 
-    private List<Event> events;
-
-    public Case(long id, List<String> attributes, EventLog eventLog, List<Event> events) {
-        this.id = id;
-        this.attributes = attributes;
-        this.events = events;
-    }
+    public Case() {}
 
     public List<Event> getEvents() {
         return events;
     }
 
-    public List<String> getAttributes() {
+    public Map<String, String> getAttributes() {
         return attributes;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

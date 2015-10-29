@@ -1,29 +1,42 @@
 package conformance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @(#) Transition.java
  */
 
-public class Transition
-{
+public class NTransition {
     private String label;
+    private List<NTransition> visiblePredecessors = new ArrayList<NTransition>();
+    private List<NTransition> visibleSuccessors = new ArrayList<NTransition>();
 
-    private PetriNet petriNet;
-
-    public void fire( Place inputPlaces ){
-
+    public void fire( NPlace inputPlaces ){
+        //TODO WTF DOES IT HAVE TO DO???
     }
 
     public String getLabel( ){
         return label;
     }
 
-    public Place getInputPlaces( ){
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public NPlace getInputPlaces( ){
         return null;
     }
 
-    public Place getOutputPlaces( ){
+    public NPlace getOutputPlaces( ){
         return null;
     }
 
+    public List<NTransition> getVisiblePredecessors() {
+        return visiblePredecessors;
+    }
+
+    public List<NTransition> getVisibleSuccessors() {
+        return visibleSuccessors;
+    }
 }

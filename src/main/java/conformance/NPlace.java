@@ -4,37 +4,29 @@ package conformance;
  * @(#) Place.java
  */
 
-public class Place
+public class NPlace
 {
-    private String name;
-
+    private String label;
     private int numberOfTokens = 0;
-
     private PetriNet petriNet;
+    private NTransition target;
+    private NTransition source;
 
-    private Transition target;
+    public NPlace() {}
 
-    private Transition source;
-
-    public Place(String name, int numberOfTokens) {
-        this.name = name;
-        this.numberOfTokens = numberOfTokens;
+    public String getLabel() {
+        return label;
     }
 
-    public String getName( ){
-        return name;
+    public void setLabel(String name) {
+        this.label = name;
     }
 
-    public void setName()
-    {
-
-    }
-
-    public int getNumberOfTokens( ){
+    public int getNumberOfTokens() {
         return numberOfTokens;
     }
 
-    public void setNumberOfTokens(int numberOfTokens){
+    public void setNumberOfTokens(int numberOfTokens) {
         this.numberOfTokens = numberOfTokens;
     }
 

@@ -1,5 +1,6 @@
 package conformance;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,20 +9,17 @@ import java.util.List;
 
 public class PetriNet
 {
-	private List<Place> places;
+	private List<NPlace> places = new ArrayList<NPlace>();
 
-	private List<Transition> transitions;
+	private List<NTransition> transitions = new ArrayList<NTransition>();
 
-	public PetriNet(List<Place> places, List<Transition> transitions) {
-	    this.places = places;
-	    this.transitions = transitions;
-	}
+	public PetriNet() {}
 
-	public List<Place> getPlaces(){
+    public List<NPlace> getPlaces(){
 	    return places;
 	}
 
-	public List<Transition> getTransitions(){
+	public List<NTransition> getTransitions(){
 	    return transitions;
 	}
 }
