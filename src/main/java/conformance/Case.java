@@ -21,6 +21,10 @@ public class Case {
         return events;
     }
 
+    public void setEvents(List<Event> list) {
+        this.events = list;
+    }
+
     public Map<String, String> getAttributes() {
         return attributes;
     }

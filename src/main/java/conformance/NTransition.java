@@ -36,7 +36,14 @@ public class NTransition {
         return visiblePredecessors;
     }
 
+    public void setVisiblePredecessors(List<NTransition> list) {
+        this.visiblePredecessors = list;
+    }
+
     public List<NTransition> getVisibleSuccessors() {
         return visibleSuccessors;
     }
-}
+
+    public void setVisibleSuccessors(List<NTransition> list) {
+        this.visibleSuccessors = list;
+    }}

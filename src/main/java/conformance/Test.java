@@ -95,11 +95,26 @@ public class Test {
                     newCase.getEvents().add(event);
                 }
                 eventLog.getCases().add(newCase);
-                return eventLog;
             }
+            return eventLog;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private int getFitness(){
+        //TODO
+        return 0;
+    }
+
+    private int getSimpleBehavioralAppropriateness() {
+        //TODO
+        return 0;
+    }
+
+    private int getSimpleStructuralAppropriateness() {
+        //TODO
+        return 0;
     }
 }

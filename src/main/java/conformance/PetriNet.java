@@ -19,7 +19,15 @@ public class PetriNet
 	    return places;
 	}
 
+    public void setPlaces(List<NPlace> list) {
+        this.places = list;
+    }
+
 	public List<NTransition> getTransitions(){
 	    return transitions;
+	}
+
+	public void setTransitions(List<NTransition> list) {
+	    this.transitions = list;
 	}
 }

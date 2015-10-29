@@ -20,12 +20,16 @@ public class EventLog
 
     public EventLog(){}
 
-    public String getName( ){
+    public String getName() {
         return name;
     }
 
-    public List<Case> getCases( ){
+    public List<Case> getCases() {
         return cases;
+    }
+
+    public void setCases(List<Case> list) {
+        this.cases = list;
     }
 
 }
