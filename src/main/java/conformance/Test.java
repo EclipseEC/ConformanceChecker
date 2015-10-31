@@ -63,7 +63,7 @@ public class Test {
                 }
                 double meanTransitions = (double) checker.getProducedTokens()
                         / checker.getConsumedTokens();
-                double instanceCount = eventLog.getInstanceCount(cs.getEventString());
+                double instanceCount = eventLog.getInstanceCount(cs.getEventSequenceString());
 
                 fitnessLeft += checker.calculateFitnessLeft(instanceCount);
                 fitnessRight += checker.calculateFitnessRight(instanceCount);

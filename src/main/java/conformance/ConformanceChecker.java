@@ -43,10 +43,6 @@ public class ConformanceChecker
         return producedTokens;
     }
 
-    public double getSimpleStructuralAppropriateness(double L, double N) {
-        return (L + 2) / N;
-    }
-
     public double calculateFitnessLeft(double instances) {
         return (instances * missingTokens) / (instances * consumedTokens);
     }
@@ -59,7 +55,4 @@ public class ConformanceChecker
         return instances * (transitions - meanTransitions);
     }
 
-    public double calculateSba() {
-        return 0;
-    }
 }

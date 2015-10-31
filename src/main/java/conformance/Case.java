@@ -29,6 +29,10 @@ public class Case {
         return attributes;
     }
 
+    public void setAttributes(Map<String, String> attributes) {
+        this.attributes = attributes;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -37,7 +41,7 @@ public class Case {
         this.name = name;
     }
 
-    public String getEventString() {
+    public String getEventSequenceString() {
         String result = "";
         for (Event event : getEvents()) {
             result += event.getName();

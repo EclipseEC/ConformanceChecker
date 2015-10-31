@@ -10,18 +10,16 @@ import java.util.List;
 public class EventLog
 {
     private String name;
-
     private List<Case> cases = new ArrayList<Case>();
-
-    public EventLog(String name, List<Case> cases) {
-        this.name = name;
-        this.cases = cases;
-    }
 
     public EventLog(){}
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Case> getCases() {
@@ -36,9 +34,9 @@ public class EventLog
         List<Case> uniqueCases = new ArrayList<Case>();
         List<String> traces = new ArrayList<String>();
         for (Case cs : cases) {
-            if (uniqueCases.isEmpty() || !traces.contains(cs.getEventString())) {
+            if (uniqueCases.isEmpty() || !traces.contains(cs.getEventSequenceString())) {
                 uniqueCases.add(cs);
-                traces.add(cs.getEventString());
+                traces.add(cs.getEventSequenceString());
             }
         }
         return uniqueCases;
@@ -47,7 +45,7 @@ public class EventLog
     public int getInstanceCount(String eventString) {
         int result = 0;
         for (Case cs : cases) {
-            if (cs.getEventString().equals(eventString)) {
+            if (cs.getEventSequenceString().equals(eventString)) {
                 result += 1;
             }
         }
