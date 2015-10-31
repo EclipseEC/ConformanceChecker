@@ -7,11 +7,8 @@ package conformance;
 public class ConformanceChecker
 {
     private int missingTokens = 0;
-
     private int remainingTokens = 0;
-
     private int consumedTokens = 0;
-
     private int producedTokens = 0;
 
     public void addMissingToken(int num) {
@@ -46,4 +43,23 @@ public class ConformanceChecker
         return producedTokens;
     }
 
+    public double getSimpleStructuralAppropriateness(double L, double N) {
+        return (L + 2) / N;
+    }
+
+    public double calculateFitnessLeft(double instances) {
+        return (instances * missingTokens) / (instances * consumedTokens);
+    }
+
+    public double calculateFitnessRight(double instances) {
+        return (instances * remainingTokens) / (instances * producedTokens);
+    }
+
+    public double calculateSbaTop(double instances, double transitions, double meanTransitions) {
+        return instances * (transitions - meanTransitions);
+    }
+
+    public double calculateSba() {
+        return 0;
+    }
 }

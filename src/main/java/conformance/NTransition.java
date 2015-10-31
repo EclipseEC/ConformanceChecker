@@ -24,14 +24,6 @@ public class NTransition {
         this.label = label;
     }
 
-    public NPlace getInputPlaces( ){
-        return null;
-    }
-
-    public NPlace getOutputPlaces( ){
-        return null;
-    }
-
     public List<NTransition> getVisiblePredecessors() {
         return visiblePredecessors;
     }
@@ -46,4 +38,6 @@ public class NTransition {
 
     public void setVisibleSuccessors(List<NTransition> list) {
         this.visibleSuccessors = list;
-    }}
+    }
+
+}

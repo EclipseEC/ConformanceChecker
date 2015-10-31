@@ -32,6 +32,52 @@ public class Test {
         try {
             petriNet = getPetriNet();
             eventLog = parseEventLog();
+            final double TRANSITION_COUNT = petriNet.getTransitions().size();
+            final double NODE_COUNT = TRANSITION_COUNT + petriNet.getPlaces().size();
+
+            double fitness = 0;
+            double fitnessLeft = 0;
+            double fitnessRight = 0;
+
+            double sba = 0;
+            double sbaTop = 0;
+            double sbaBot = 0;
+
+            double ssa = 0;
+
+            //All the important stuff here
+            for (Case cs : eventLog.getUniqueCases()) {
+                ConformanceChecker checker = new ConformanceChecker();
+                for (Event e : cs.getEvents()) {
+                    NTransition transition = petriNet.getTransitionWithLabel(e.getName());
+                    if (!transition.getVisiblePredecessors().isEmpty()) {
+                        checker.addConsumedToken(transition.getVisiblePredecessors().size());
+                    } else {
+                        checker.addProducedToken(1);
+                    }
+                    if (!transition.getVisibleSuccessors().isEmpty()) {
+                        checker.addProducedToken(transition.getVisibleSuccessors().size());
+                    } else {
+                        checker.addConsumedToken(1);
+                    }
+                }
+                double meanTransitions = (double) checker.getProducedTokens()
+                        / checker.getConsumedTokens();
+                double instanceCount = eventLog.getInstanceCount(cs.getEventString());
+
+                fitnessLeft += checker.calculateFitnessLeft(instanceCount);
+                fitnessRight += checker.calculateFitnessRight(instanceCount);
+
+                sbaBot += instanceCount;
+                sbaTop += checker.calculateSbaTop(instanceCount, TRANSITION_COUNT, meanTransitions);
+            }
+            fitness = 0.5 * (1 - fitnessLeft) + (0.5 * (1 - fitnessRight));
+            sba = sbaTop / ((TRANSITION_COUNT - 1) * sbaBot);
+            ssa = (TRANSITION_COUNT + 2)
+                    / (NODE_COUNT);
+            System.out.println(String.format("Fitness: %s\nSimple behavioral "
+                    + "appropriateness: %s\nSimple structural appropriateness: "
+                    + "%s\n", fitness, sba, ssa));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -103,18 +149,4 @@ public class Test {
         return null;
     }
 
-    private int getFitness(){
-        //TODO
-        return 0;
-    }
-
-    private int getSimpleBehavioralAppropriateness() {
-        //TODO
-        return 0;
-    }
-
-    private int getSimpleStructuralAppropriateness() {
-        //TODO
-        return 0;
-    }
 }

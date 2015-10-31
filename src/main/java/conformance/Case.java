@@ -36,4 +36,12 @@ public class Case {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getEventString() {
+        String result = "";
+        for (Event event : getEvents()) {
+            result += event.getName();
+        }
+        return result;
+    }
 }

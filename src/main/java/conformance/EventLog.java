@@ -32,4 +32,26 @@ public class EventLog
         this.cases = list;
     }
 
+    public List<Case> getUniqueCases() {
+        List<Case> uniqueCases = new ArrayList<Case>();
+        List<String> traces = new ArrayList<String>();
+        for (Case cs : cases) {
+            if (uniqueCases.isEmpty() || !traces.contains(cs.getEventString())) {
+                uniqueCases.add(cs);
+                traces.add(cs.getEventString());
+            }
+        }
+        return uniqueCases;
+    }
+
+    public int getInstanceCount(String eventString) {
+        int result = 0;
+        for (Case cs : cases) {
+            if (cs.getEventString().equals(eventString)) {
+                result += 1;
+            }
+        }
+        return result;
+    }
+
 }
